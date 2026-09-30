@@ -83,6 +83,23 @@ On hardware, with an SO-101 follower:
 python3 -m saathi.hold --port /dev/tty.usbmodemXXXX --id saathi --seconds 30
 ```
 
+## Tech stack
+
+Built at [La Machine](https://luma.com/ni360mav), the Tech Makers robotics hackathon.
+
+| Layer | What |
+| --- | --- |
+| Demo arm | [MakerMods Maker Arm](https://www.makermods.ai/maker-arm): 6+1 DoF, RobStride QDD actuators, MIT protocol over CAN |
+| Robot framework | [Hugging Face LeRobot](https://github.com/huggingface/lerobot) |
+| Code in this repo | Python 3.10+, standard library only; `lerobot` for hardware |
+| Hardware adapter | SO-101 follower, Feetech bus, `Present_Load` register |
+| Voice | Pre-recorded Nepali wav, played on device (`afplay` / `paplay` / `aplay` / `ffplay`) |
+
+The on-stage demo ran on the RobStride arm. The adapter here targets the SO-101
+Feetech bus; porting it means reading torque from the RobStride MIT feedback frame instead.
+
+Pitch deck: [docs/Saathi.pdf](docs/Saathi.pdf)
+
 ## Honest state of this
 
 Built and working: the force-limited hold, the withdrawal detection, the phrase
